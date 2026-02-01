@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input"
 import { Button } from '@/components/ui/button'
 import Api from '../_utils/Api'
 import Image from 'next/image'
+import Link from 'next/link'
 function CategorySearch() {
 
     const [categoryList, setCategoryList] = useState([])
@@ -32,18 +33,18 @@ function CategorySearch() {
             <div className=' grid md:grid-cols-3 sm:grid-cols-1 mt=8 '>
                 {categoryList.map((cat, index) => {
                     return (
-                        <div key={index} className='flex flex-col justify-center text-center p-5 bg-lime-200 items-center mt-10 m-2 rounded-3xl hover:scale-105 transition-all ease-in-out cursor-pointer'>
+                        <Link href={`/search/${cat.name}`} key={index} className='flex flex-col justify-center text-center p-5 bg-lime-200 items-center mt-10 m-2 rounded-3xl hover:scale-105 transition-all ease-in-out cursor-pointer'>
                             <Image
                                 src={`http://localhost:1337${cat?.icon?.[0]?.url}`}
                                 width={70}
                                 height={70}
                                 alt={cat?.name}
                                 unoptimized
-                                
+
                             />
                             <label className='mt-2 font-medium'>{cat?.name}</label>
 
-                        </div>
+                        </Link>
                     )
                 })}
             </div>

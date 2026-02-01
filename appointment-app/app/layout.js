@@ -1,6 +1,7 @@
 import { Outfit } from "next/font/google";
 import "./globals.css";
 import Header from "./_component/Header";
+import Footer from "./_component/Footer";
 
 const outfit = Outfit({
 
@@ -24,6 +25,7 @@ export default function RootLayout({ children }) {
           <Header />
 
           {children}
+          <Footer />
         </div>
       </body>
     </html>
