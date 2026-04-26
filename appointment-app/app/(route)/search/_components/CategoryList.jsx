@@ -34,7 +34,7 @@ function CategoryList() {
                     <CommandEmpty>No results found.</CommandEmpty>
                     <CommandGroup  heading="Suggestions">
                         {categoryList?.map((cat, index) => (
-                            <CommandItem>
+                            <CommandItem key={index}>
                                 <Link href={`/search/${cat?.name}`}  className="p-2 flex gap-2 items-center w-full hover:bg-lime-300 cursor-pointer" >
                                     <Image src={`http://localhost:1337${cat?.icon?.[0]?.url}`}
                                         width={30}

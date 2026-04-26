@@ -1,14 +1,16 @@
 import React from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 
-function DoctorList({ doctorsList }) {
+function DoctorList({ doctorsList, heading="Popular Doctors" }) {
     return (
         <div>
-            <h2 className='font-bold text-xl text-lime-600'> Popular
-                Doctors</h2>
+            <h2 className='font-bold text-xl text-lime-600'> {heading}</h2>
             <div className='grid grid-cols-1 md:grid-cols-3'>
-                {doctorsList.map((doctor, index) => {
+                {doctorsList?.map((doctor, index) => {
+                    
                     return (
+                        <Link href={`/details/${doctor?.documentId}`} key={index}> 
                         <div key={index} className='  m-5 p-5 border rounded-lg hover:scale-105 transition-all ease-in-out cursor-pointer'>
 
 
@@ -18,7 +20,7 @@ function DoctorList({ doctorsList }) {
                                 height={200}
                                 alt={doctor?.name}
                                 unoptimized
-                                className='h-[200px] w-full object-cover rounded-lg'
+                                className='h-[300px] w-[300px] object-cover rounded-lg'
 
 
                             />
@@ -31,8 +33,8 @@ function DoctorList({ doctorsList }) {
                                 {doctor?.year_of_experience} years</h2>
 
                                 {/* adrees and phone number */}
-                            <h2 className='mt-2'><span className='text-lime-600'>Address : {" "}</span>
-                                {doctor?.adress}</h2>
+                            <h2 className='mt-2'><span className='text-lime-600'>address : {" "}</span>
+                                {doctor?.address}</h2>
                             <h2 className='mt-2'><span className='text-lime-600'>Phone Number :{" "}  </span>
                                 {doctor?.phone}</h2>
 
@@ -40,6 +42,7 @@ function DoctorList({ doctorsList }) {
 
                             <h2 className='border-lime-600 border p-3 text-lime-600 mt-5 hover:bg-lime-300 cursor-pointer hover:scale-110 transition-all ease-in-out  w-max'>Book Now</h2>
                         </div>
+                        </Link>
                     )
                 })}
             </div>
